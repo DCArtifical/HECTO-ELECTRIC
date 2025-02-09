@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>晟辰电气集团 - 引领智能电气新未来</title>
+    <!-- 引入粒子效果库 -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- 引入 AOS 动画库 -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- 引入 Swiper 轮播库 -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        :root {
+            --primary-color: #00a8ff;
+            --secondary-color: #192a56;
+            --accent-color: #44bd32;
+            --text-color: #ffffff;
+            --bg-color: #0c1631;
+            --gradient: linear-gradient(45deg, #00a8ff, #00ff88);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 导航栏和Logo相关样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(12, 22, 49, 0.95);
+            padding: 0.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-container svg {
+            height: 40px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        .logo-container:hover svg {
+            filter: brightness(1.2);
+            transform: scale(1.02);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* 其他样式保持不变 */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            padding: 100px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: var(--text-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gradient);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 168, 255, 0.3);
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00a8ff"/>
+                        <stop offset="100%" style="stop-color:#00ff88"/>
+                    </linearGradient>
+                    <linearGradient id="shineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:rgba(255,255,255,0)"/>
+                        <stop offset="50%" style="stop-color:rgba(255,255,255,0.3)"/>
+                        <stop offset="100%" style="stop-color:rgba(255,255,255,0)"/>
+                    </linearGradient>
+                </defs>
+                
+                <path d="M40 10 L60 10 L45 30 L55 30 L30 50 L35 35 L25 35 Z" 
+                      fill="url(#logoGradient)" 
+                      stroke="none"/>
+                
+                <text x="75" y="28" 
+                      font-family="'PingFang SC', 'Microsoft YaHei', sans-serif" 
+                      font-size="24" 
+                      font-weight="bold" 
+                      fill="url(#logoGradient)">晟辰电气</text>
+                
+                <text x="75" y="45" 
+                      font-family="Arial, sans-serif" 
+                      font-size="12" 
+                      fill="#ffffff" 
+                      opacity="0.8">SHENGCHEN ELECTRIC</text>
+                
+                <path d="M40 52 L160 52" 
+                      stroke="url(#logoGradient)" 
+                      stroke-width="1" 
+                      opacity="0.5"/>
+                
+                <rect x="0" y="0" width="200" height="60" 
+                      fill="url(#shineGradient)" 
+                      opacity="0.1">
+                    <animate attributeName="x" 
+                             from="-200" to="200" 
+                             dur="3s" 
+                             repeatCount="indefinite"/>
+                </rect>
+            </svg>
+        </div>
+        <div class="nav-links">
+            <a href="#home">首页</a>
+            <a href="#about">关于我们</a>
+            <a href="#products">产品服务</a>
+            <a href="#contact">联系我们</a>
+        </div>
+    </nav>
+
+    <!-- 粒子效果背景 -->
+    <div id="particles-js"></div>
+
+    <!-- 主页面 -->
+    <section id="home" class="hero">
+        <h1>引领智能电气新未来</h1>
+        <p>晟辰电气集团致力于为全球客户提供智能化、高效率的电气解决方案</p>
+        <a href="#contact" class="cta-button">了解更多</a>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="section">
+        <h2 class="section-title">关于我们</h2>
+        <div class="about-content" data-aos="fade-up">
+            <p>晟辰电气集团成立于2010年，是一家专注于电气设备研发、生产和销售的高新技术企业。我们拥有先进的生产设备和专业的研发团队，致力于为客户提供最优质的产品和服务。</p>
+        </div>
+    </section>
+
+    <!-- 产品服务 -->
+    <section id="products" class="section">
+        <h2 class="section-title">产品服务</h2>
+        <div class="products">
+            <div class="product-card" data-aos="fade-up">
+                <h3>智能配电系统</h3>
+                <p>采用先进的智能控制技术，实现电力系统的智能化管理</p>
+            </div>
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>新能源设备</h3>
+                <p>太阳能、风能等新能源发电设备的研发与制造</p>
+            </div>
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>工业自动化</h3>
+                <p>为工业客户提供定制化的自动化解决方案</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="section">
+        <h2 class="section-title">联系我们</h2>
+        <div class="contact-form" data-aos="fade-up">
+            <div class="form-group">
+                <input type="text" placeholder="您的姓名">
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="电子邮箱">
+            </div>
+            <div class="form-group">
+                <textarea rows="5" placeholder="请输入您的留言"></textarea>
+            </div>
+            <button class="cta-button">发送信息</button>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>© 2025 晟辰电气集团 版权所有</p>
+    </footer>
+
+    <script>
+        // 初始化 AOS 动画
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // 配置粒子效果
+        particlesJS('particles-js',
+        {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle"
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                }
+            },
+            "retina_detect": true
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
